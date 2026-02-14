@@ -1,0 +1,27 @@
+{
+  "name": "web-perception-agent-mcp",
+  "version": "0.1.0",
+  "description": "Model-agnostic MCP toolchain for real-time DOM-first web perception + action execution",
+  "defaultTransport": "stdio",
+  "entrypoint": "dist/index.js",
+  "supports": {
+    "tools": [
+      "web_agent_session_create",
+      "web_agent_step",
+      "web_agent_snapshot",
+      "web_agent_session_stop",
+      "web_agent_replay"
+    ],
+    "optionalTransport": "http"
+  },
+  "capabilities": {
+    "dom": true,
+    "accessibility": true,
+    "frames": true,
+    "network": true,
+    "replay": true
+  },
+  "links": {
+    "repository": "https://github.com/jackatlasov/web-perception-agent-mcp"
+  }
+}

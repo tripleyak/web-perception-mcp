@@ -1,0 +1,53 @@
+{
+  "name": "web-perception-agent-mcp",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Model-agnostic MCP server for real-time web perception and deterministic action execution",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "web-perception-agent-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest",
+    "lint": "eslint \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "smoke": "bash scripts/smoke.sh",
+    "smoke:youtube": "SMOKE_TARGET_URL='https://www.youtube.com/watch?v=dQw4w9WgXcQ' WEB_AGENT_REST_PORT=3415 npm run smoke",
+    "benchmark": "node scripts/benchmark.mjs",
+    "benchmark:youtube": "npm run benchmark -- --config scripts/benchmark.youtube.config.json --port 3415",
+    "benchmark:youtube:no-strict": "npm run benchmark -- --config scripts/benchmark.youtube.config.json --port 3415 --no-strict",
+    "rest": "WEB_AGENT_REST_PORT=3400 MCP_TRANSPORT=rest node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "playwright",
+    "cdp",
+    "web-automation",
+    "agent",
+    "vision"
+  ],
+  "author": "Jack Atlasov",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "playwright": "^1.52.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.12.0",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "eslint": "^9.20.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

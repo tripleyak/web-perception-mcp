@@ -1,0 +1,178 @@
+{
+  "suites": [
+    {
+      "name": "youtube_dom_controls",
+      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "capture_profile": "adaptive",
+      "steps": [
+        {
+          "action": "click",
+          "selector": "text=Accept all",
+          "timeout_ms": 8000,
+          "ignore_failures": true,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_ax": true,
+            "include_network": true,
+            "max_frames": 4
+          }
+        },
+        {
+          "action": "click",
+          "selector": "text=I agree",
+          "timeout_ms": 8000,
+          "ignore_failures": true,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_ax": true,
+            "include_network": true,
+            "max_frames": 4
+          }
+        },
+        {
+          "action": "press",
+          "key": "Escape",
+          "timeout_ms": 4000,
+          "ignore_failures": true,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_ax": true,
+            "include_network": true,
+            "max_frames": 4
+          }
+        },
+        {
+          "action": "wait_for",
+          "wait_for": "networkidle",
+          "timeout_ms": 20000,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_ax": true,
+            "include_network": true,
+            "max_frames": 6
+          }
+        },
+        {
+          "action": "click",
+          "selector": "#movie_player button.ytp-large-play-button",
+          "timeout_ms": 12000,
+          "fallbacks": [
+            { "action": "click", "selector": "#movie_player .ytp-play-button", "timeout_ms": 12000 },
+            { "action": "click", "selector": "button[aria-label='Play']", "timeout_ms": 12000 },
+            { "action": "click", "selector": "button[title='Play (k)']", "timeout_ms": 12000 },
+            { "action": "press", "key": "k", "timeout_ms": 12000 },
+            { "action": "click", "x": 640, "y": 360, "timeout_ms": 12000 },
+            { "action": "click", "x": 960, "y": 540, "timeout_ms": 12000 }
+          ],
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_network": true,
+            "max_frames": 6
+          }
+        },
+        {
+          "action": "scroll",
+          "delta_y": 280,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_network": true,
+            "max_frames": 4
+          }
+        }
+      ]
+    },
+    {
+      "name": "youtube_embed_frames_only",
+      "url": "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?controls=1",
+      "capture_profile": "frames_only",
+      "steps": [
+        {
+          "action": "wait",
+          "timeout_ms": 12000,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_ax": false,
+            "include_network": true,
+            "max_frames": 6
+          }
+        },
+        {
+          "action": "click",
+          "x": 640,
+          "y": 360,
+          "timeout_ms": 12000,
+          "capture": {
+            "include_frame": true,
+            "include_network": true,
+            "max_frames": 6
+          }
+        },
+        {
+          "action": "wait_for",
+          "wait_for": "networkidle",
+          "timeout_ms": 12000,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_network": true,
+            "max_frames": 4
+          }
+        }
+      ]
+    },
+    {
+      "name": "w3_animated_video_control",
+      "url": "https://www.w3.org/2010/05/video/mediaevents.html",
+      "capture_profile": "adaptive",
+      "steps": [
+        {
+          "action": "wait_for",
+          "wait_for": "networkidle",
+          "timeout_ms": 15000,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_ax": true,
+            "include_network": true,
+            "max_frames": 6
+          }
+        },
+        {
+          "action": "click",
+          "x": 120,
+          "y": 120,
+          "timeout_ms": 12000,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_network": true,
+            "max_frames": 6
+          }
+        },
+        {
+          "action": "scroll",
+          "delta_y": 220,
+          "capture": {
+            "include_frame": true,
+            "include_dom": true,
+            "include_network": true,
+            "max_frames": 4
+          }
+        }
+      ]
+    }
+  ],
+  "acceptance": {
+    "p50LatencyMs": 4000,
+    "p95LatencyMs": 22000,
+    "minActionSuccessRateTyped": 0.75,
+    "minActionSuccessRateMixed": 0.6
+  }
+}
