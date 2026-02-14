@@ -26,7 +26,9 @@ export class StateBuilder {
 
     const domSummary = options.includeDom ? await this.buildDomSummary() : undefined;
     const accessibility = options.includeAx
-      ? await this.page.accessibility.snapshot({ interestingOnly: true }).catch(() => null)
+      ? await (this.page as { accessibility?: { snapshot: (options?: { interestingOnly?: boolean }) => Promise<unknown> } }).accessibility
+        ?.snapshot({ interestingOnly: true })
+        .catch(() => null)
       : undefined;
     const network = options.includeNetwork ? [...this.networkRing.slice(-100)] : [];
     const frameLimit = options.includeFrame ? Math.max(1, options.maxFrames ?? 6) : 0;
